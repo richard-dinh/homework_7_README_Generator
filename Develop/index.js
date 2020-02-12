@@ -1,4 +1,6 @@
 const inquirer = require('inquirer')
+const api = require('./utils/api.js')
+const markdown = require('./utils/generateMarkdown.js')
 const questions = [
   {
     type: 'input',
