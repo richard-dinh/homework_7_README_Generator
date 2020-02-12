@@ -10,8 +10,43 @@ const questions = [
   },
   {
     type: 'input',
+    name: 'title',
+    message: 'Please enter your Project Title',
+  },
+  {
+    type: 'input',
     name: 'description',
-    message: 'Please enter your project description',
+    message: 'Please enter your Project description',
+  },
+  {
+    type: 'input',
+    name: 'tableContents',
+    message: 'Please enter your Table of Contents separated by commans',
+  },
+  {
+    type: 'input',
+    name: 'installation',
+    message: 'Please enter you the Installation command',
+  },
+  {
+    type: 'input',
+    name: 'usage',
+    message: 'Please enter Usage examples',
+  },
+  {
+    type: 'input',
+    name: 'license',
+    message: 'Please enter the License link',
+  },
+  {
+    type: 'input',
+    name: 'contributing',
+    message: 'Please enter a message about Contributing',
+  },
+  {
+    type: 'input',
+    name: 'questions',
+    message: 'Please enter a message for directing questions',
   }
 ]
 
@@ -22,10 +57,9 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt(questions).then(answers => {
     console.log(JSON.stringify(answers, null, '  '));
-    console.log(answers.username)
     let axiosProm = api.getUser(answers.username)
-    axiosProm.then(response =>{
-      console.log(response.data)
+    axiosProm.then(({data:userProfile}) =>{
+      console.log(userProfile)
     })
   })
 }
