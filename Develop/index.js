@@ -16,7 +16,7 @@ const questions = [
 ];
 
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, generateMarkdown(data), error => (error ? console.log(error) : null));
+    fs.writeFile(fileName, generateMarkdown(data), error => (error ? console.error(error) : null));
 }
 
 function init() {
@@ -24,7 +24,9 @@ function init() {
         console.log(JSON.stringify(answers, null, "  "));
         console.log(answers.username);
         let axiosProm = api.getUser(answers.username);
-        axiosProm.then(res => console.log(res));
+        axiosProm.then(res => {
+            // All file handeling goes here
+        });
     });
 }
 
