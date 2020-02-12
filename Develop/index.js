@@ -51,7 +51,7 @@ const questions = [
 ]
 
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, generateMarkdown(data), error => error ? console.log(error) : null)
+  fs.writeFile(fileName, markdown(data), error => error ? console.log(error) : null)
 }
 
 function init() {
@@ -79,10 +79,13 @@ function init() {
       for(let i=0; i<tableList.length; i++){
         tableList[i] = `${i+1}. ${tableList[i]}`
       }
-      tableList.join('\n')
+      tableList = tableList.join('\n')
+      markDownInfo.tableContents = tableList
       console.log(`tableList: ${tableList}`)
-      console.log(`Current data object: ${JSON.stringify(markDownInfo)}`)
+      console.log(`Current data object: ${JSON.stringify(answers, null, '  ')}`)
+      writeToFile('README.md', markDownInfo)
     })
+    .catch(error => console.error(error))
   })
 }
 
