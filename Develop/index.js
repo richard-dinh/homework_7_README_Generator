@@ -21,4 +21,5 @@ init();
 inquirer.prompt(questions).then(answers => {
   console.log(JSON.stringify(answers, null, '  '));
   console.log(answers.gitHubUserName)
+  api(answers.gitHubUserName)
 });
