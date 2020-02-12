@@ -20,12 +20,12 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
-
+  inquirer.prompt(questions).then(answers => {
+    console.log(JSON.stringify(answers, null, '  '));
+    console.log(answers.username)
+    let data = api.getUser(answers.username)
+    console.log(`data is :${data}`)
+  });
 }
 
 init();
-
-inquirer.prompt(questions).then(answers => {
-  console.log(JSON.stringify(answers, null, '  '));
-  console.log(answers.username)
-});
