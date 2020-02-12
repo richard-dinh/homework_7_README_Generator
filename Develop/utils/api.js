@@ -1,5 +1,4 @@
 const axios = require('axios')
-
 const api = username =>{
   axios.get(`https://api.github.com/users/${username}`)
   .then(data =>{
@@ -9,3 +8,11 @@ const api = username =>{
 }
 
 module.exports = api;
+
+// const api = {
+//   getUser(username) {
+
+//   }
+// };
+
+// module.exports = api;

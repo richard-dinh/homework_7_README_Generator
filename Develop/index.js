@@ -1,15 +1,22 @@
 const inquirer = require('inquirer')
 const api = require('./utils/api.js')
 const markdown = require('./utils/generateMarkdown.js')
+const fs = require('fs')
 const questions = [
   {
     type: 'input',
-    name: 'gitHubUserName',
+    name: 'username',
     message: 'Please enter your GitHub Username',
-  }
+  },
+]
+    type: 'input',
+    name: 'description',
+    message: 'Please enter your project description',
+  },
 ]
 
 function writeToFile(fileName, data) {
+  fs.writeFile(fileName, generateMarkdown(data), error => error ? console.log(error) : null)
 }
 
 function init() {
