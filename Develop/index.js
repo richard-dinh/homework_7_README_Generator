@@ -55,11 +55,33 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
+  let markDownInfo={}
   inquirer.prompt(questions).then(answers => {
     console.log(JSON.stringify(answers, null, '  '));
     let axiosProm = api.getUser(answers.username)
     axiosProm.then(({data:userProfile}) =>{
-      console.log(userProfile)
+      //getting GitHub username
+      markDownInfo.username = answers.username
+      //getting profile pic
+      markDownInfo.image = userProfile.avatar_url
+      //checking if email is null
+      if(userProfile.email === null){
+        markDownInfo.email = 'No email to display'
+      }else{
+        markDownInfo.email = userProfile.email
+      }
+      //getting project title
+      markDownInfo.title = answers.title
+      //getting project description
+      markDownInfo.description = answers.description
+      //getting table of contents
+      let tableList = answers.tableContents.split(',')
+      for(let i=0; i<tableList.length; i++){
+        tableList[i] = `${i+1}. ${tableList[i]}`
+      }
+      tableList.join('\n')
+      console.log(`tableList: ${tableList}`)
+      console.log(`Current data object: ${JSON.stringify(markDownInfo)}`)
     })
   })
 }
