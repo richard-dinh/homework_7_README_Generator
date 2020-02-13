@@ -23,19 +23,45 @@ module.exports = data =>{
   return `
 # ${data.title}
 
-###GitHub Username: ${data.username}
-###Email: ${data.email}
+### GitHub Username: ${data.username}
+
+### Email: ${data.email}
+
 ![Avatar Image](${data.image})
-##Table of Contents
+
+## Table of Contents
+
 ${data.tableContents}
 
-##Description
+## Description
+
 ${data.description}
 
+## Installation
 
+To install, run the below code:
+
+\`\`\`bash
+  ${data.installation}
+\`\`\`
+
+## Usage
+
+\`\`\`python
+  import ${data.title}
+
+  ${data.usage}
+\`\`\`
+
+
+## Contributing
+${data.contributing}
+
+## Questions
+${data.questions}
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](${data.license})
 `
 };
 

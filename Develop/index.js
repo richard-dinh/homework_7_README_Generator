@@ -81,6 +81,16 @@ function init() {
       }
       tableList = tableList.join('\n')
       markDownInfo.tableContents = tableList
+      //getting installation
+      markDownInfo.installation = answers.installation
+      //getting usage
+      markDownInfo.usage = answers.usage
+      //getting license
+      markDownInfo.license = answers.license
+      //getting contribution
+      markDownInfo.contributing = answers.contributing
+      //getting questions
+      markDownInfo.questions = answers.questions
       console.log(`tableList: ${tableList}`)
       console.log(`Current data object: ${JSON.stringify(answers, null, '  ')}`)
       writeToFile('README.md', markDownInfo)
